@@ -14,6 +14,11 @@ export function Form ({ onAdd }: FormProps) {
         setName(name.trim())
     }
 
+    const handleButtonAddPress = () => {
+        onAdd(name)
+        setName('')
+    }
+
     return (
         <View style={styles.form}>
             <TextInput
@@ -22,10 +27,11 @@ export function Form ({ onAdd }: FormProps) {
                 placeholderTextColor="#aaaaaa"
                 keyboardType="default"
                 onChangeText={handleChange}
+                value={name}
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={() => onAdd(name)}
+                onPress={handleButtonAddPress}
             >
                 <Text style={styles.buttonText}>+</Text>
             </TouchableOpacity>

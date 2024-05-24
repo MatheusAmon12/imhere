@@ -1,20 +1,18 @@
-import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { NativeSyntheticEvent, Text, TextInput, TextInputChangeEventData, TouchableOpacity, View } from "react-native"
 
 import { styles } from "./styles"
+import { useState } from "react"
 
 type FormProps = {
-    participantsList: string[]
+    onAdd: (name: string) => void
 }
 
-export function Form ({ participantsList }: FormProps) {
-    const handleParticipantAdd = () => {
-        if (participantsList.includes('Matheus')) {
-            return Alert.alert(
-                "Participante existente",
-                "Já existe um participante com esse nome",
-            )
-        }
-    }  
+export function Form ({ onAdd }: FormProps) {
+    const [name, setName] = useState<string>('')
+
+    const handleChange = (name: string) => {
+        setName(name.trim())
+    }
 
     return (
         <View style={styles.form}>
@@ -22,10 +20,12 @@ export function Form ({ participantsList }: FormProps) {
                 style={styles.input}
                 placeholder="Participante"
                 placeholderTextColor="#aaaaaa"
+                keyboardType="default"
+                onChangeText={handleChange}
             />
             <TouchableOpacity
                 style={styles.button}
-                onPress={handleParticipantAdd}
+                onPress={() => onAdd(name)}
             >
                 <Text style={styles.buttonText}>+</Text>
             </TouchableOpacity>

@@ -2,26 +2,21 @@ import { Alert, FlatList,Text, View } from "react-native"
 import { styles } from "./styles"
 import { Form } from "../../components/Form"
 import { Participant } from "../../components/Participant"
+import { useState } from "react"
 
 export function Home () { 
-  const participants = [
-    "Matheus",
-    "João",
-    "Maria",
-    "Pedro",
-    "Lucas",
-    "Ana",
-    "Carla",
-    "Bruna",
-    "Gabriel",
-    "Luciana",
-    "Vitoria",
-    "Isabela",
-    "Lara",
-    "Mariana",
-    "Bruno",
-    "Vitor",
-  ]
+  const [participants, setParticipants] = useState<string[]>([])
+
+  const handleParticipantAdd = (name: string) => {
+    if (participants.includes(name)) {
+        return Alert.alert(
+            "Participante existente",
+            "Já existe um participante com esse nome",
+        )
+    }
+
+    setParticipants(prev => [name, ...prev])
+  }  
 
   const handleParticipantRemover = (name: string) => {
     Alert.alert(
@@ -44,7 +39,7 @@ export function Home () {
     <View style={styles.view}>
       <Text style={styles.title}>React Native</Text>
       <Text style={styles.subTitle}>Quinta, 23 de Maio de 2024</Text>
-      <Form participantsList={participants} />
+      <Form onAdd={handleParticipantAdd} />
       <FlatList 
         data={participants} 
         keyExtractor={(item) => item} 
@@ -55,6 +50,11 @@ export function Home () {
             onRemove={() => handleParticipantRemover(item)} 
           />
         )} 
+        ListEmptyComponent={(
+          <Text style={styles.listEmptyText}>
+            Ninguém chegou ao evento ainda? Adicione participantes a sua lista de presença. 
+          </Text>
+        )}
         showsVerticalScrollIndicator={false}
       />
     </View>

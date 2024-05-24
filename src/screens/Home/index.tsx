@@ -29,7 +29,11 @@ export function Home () {
         },
         {
           text: "Remover",
-          onPress: () => Alert.alert(`Participante ${name} removido!`)
+          onPress: () => {
+            const newParticipants = participants.filter(participant => participant !== name)
+            setParticipants(newParticipants)
+            Alert.alert("Participante removido com sucesso!")
+          }
         },
       ]
     )

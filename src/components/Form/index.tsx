@@ -1,10 +1,19 @@
-import { Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native"
 
 import { styles } from "./styles"
 
-export function Form () {
+type FormProps = {
+    participantsList: string[]
+}
+
+export function Form ({ participantsList }: FormProps) {
     const handleParticipantAdd = () => {
-    console.log('Adicionado!')
+        if (participantsList.includes('Matheus')) {
+            return Alert.alert(
+                "Participante existente",
+                "Já existe um participante com esse nome",
+            )
+        }
     }  
 
     return (

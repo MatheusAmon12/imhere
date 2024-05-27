@@ -16,7 +16,7 @@ export function Home () {
         )
     }
 
-    setParticipants(prev => [name.trim(), ...prev])
+    setParticipants(prev => [name, ...prev])
   }  
 
   const handleParticipantRemover = (name: string) => {

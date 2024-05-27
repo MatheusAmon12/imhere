@@ -15,7 +15,7 @@ export function Form ({ onAdd }: FormProps) {
     }
 
     const handleButtonAddPress = () => {
-        onAdd(name)
+        onAdd(name.trim())
         setName('')
     }
 

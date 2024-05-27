@@ -1,4 +1,4 @@
-import { Alert, FlatList,Text, View } from "react-native"
+import { Alert, FlatList,Text, ToastAndroid, View } from "react-native"
 import { styles } from "./styles"
 import { Form } from "../../components/Form"
 import { Participant } from "../../components/Participant"
@@ -32,7 +32,7 @@ export function Home () {
           onPress: () => {
             const newParticipants = participants.filter(participant => participant !== name)
             setParticipants(newParticipants)
-            Alert.alert("Participante removido com sucesso!")
+            ToastAndroid.show("Participante removido com sucesso!", ToastAndroid.SHORT)
           }
         },
       ]

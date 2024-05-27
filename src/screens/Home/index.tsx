@@ -3,7 +3,6 @@ import { styles } from "./styles"
 import { Form } from "../../components/Form"
 import { Participant } from "../../components/Participant"
 import { useState } from "react"
-import DateTimePicker, { DateTimePickerEvent } from "@react-native-community/datetimepicker"
 import Header from "../../components/Header"
 
 export function Home () { 
@@ -17,7 +16,7 @@ export function Home () {
         )
     }
 
-    setParticipants(prev => [name, ...prev])
+    setParticipants(prev => [name.trim(), ...prev])
   }  
 
   const handleParticipantRemover = (name: string) => {
@@ -42,26 +41,28 @@ export function Home () {
   }
 
   return (
-    <View style={styles.view}>
+    <>
       <Header />
-      <Form onAdd={handleParticipantAdd} />
-      <FlatList 
-        data={participants} 
-        keyExtractor={(item) => item} 
-        renderItem={({ item, index }) => (
-          <Participant 
-            key={index}
-            name={item} 
-            onRemove={() => handleParticipantRemover(item)} 
-          />
-        )} 
-        ListEmptyComponent={(
-          <Text style={styles.listEmptyText}>
-            Ninguém chegou ao evento ainda? Adicione participantes a sua lista de presença. 
-          </Text>
-        )}
-        showsVerticalScrollIndicator={false}
-      />
-    </View>
+      <View style={styles.view}>
+        <Form onAdd={handleParticipantAdd} />
+        <FlatList 
+          data={participants} 
+          keyExtractor={(item) => item} 
+          renderItem={({ item, index }) => (
+            <Participant 
+              key={index}
+              name={item} 
+              onRemove={() => handleParticipantRemover(item)} 
+            />
+          )} 
+          ListEmptyComponent={(
+            <Text style={styles.listEmptyText}>
+              Ninguém chegou ao evento ainda? Adicione participantes a sua lista de presença. 
+            </Text>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </>
   )
 }

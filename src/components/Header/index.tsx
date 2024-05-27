@@ -1,4 +1,4 @@
-import { Image, Platform, Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Image, ImageBackground, Platform, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
 import { useState } from "react"
 import DateTimePicker, { DateTimePickerEvent } from "@react-native-community/datetimepicker"
@@ -15,7 +15,7 @@ const Header = () => {
     }
 
     return ( 
-        <View>
+        <ImageBackground source={require('../../../assets/header-background.jpg')} style={styles.container}>
             <View style={styles.titleContent}>
                 <TextInput
                 value={eventName}
@@ -37,7 +37,7 @@ const Header = () => {
                 )
                 }
             </TouchableOpacity>
-        </View>
+        </ImageBackground>
      );
 }
  

@@ -11,7 +11,7 @@ export function Form ({ onAdd }: FormProps) {
     const [name, setName] = useState<string>('')
 
     const handleChange = (name: string) => {
-        setName(name.trim())
+        setName(name)
     }
 
     const handleButtonAddPress = () => {

@@ -8,18 +8,18 @@ export const styles = StyleSheet.create({
         marginTop: 56,
     },
     title: {
-        color: '#1A1A1A',
+        color: '#FFF',
         fontSize: 24,
         fontWeight: 'bold',
         width: 'auto'
     },
     subTitle: {
-        color: '#4A4A4A',
+        color: '#FFF',
     },
-    view: {
-        padding: 24,
-        paddingBottom: 0,
-        backgroundColor: '#FFF',
-        flex: 1,
-    },
+    container: {
+        height: 220,
+        justifyContent: 'flex-end',
+        paddingLeft: 24,
+        paddingBottom: 16,
+    }
 })

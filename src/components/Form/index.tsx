@@ -24,7 +24,7 @@ export function Form ({ onAdd }: FormProps) {
             <TextInput
                 style={styles.input}
                 placeholder="Participante"
-                placeholderTextColor="#aaaaaa"
+                placeholderTextColor="#AEDFF2"
                 keyboardType="default"
                 onChangeText={handleChange}
                 value={name}

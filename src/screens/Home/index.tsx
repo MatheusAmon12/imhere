@@ -1,8 +1,10 @@
-import { Alert, FlatList,Text, ToastAndroid, View } from "react-native"
+import { Alert, Button, FlatList, Image,Platform, Text, TextInput, ToastAndroid, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
 import { Form } from "../../components/Form"
 import { Participant } from "../../components/Participant"
 import { useState } from "react"
+import DateTimePicker, { DateTimePickerEvent } from "@react-native-community/datetimepicker"
+import Header from "../../components/Header"
 
 export function Home () { 
   const [participants, setParticipants] = useState<string[]>([])
@@ -41,8 +43,7 @@ export function Home () {
 
   return (
     <View style={styles.view}>
-      <Text style={styles.title}>React Native</Text>
-      <Text style={styles.subTitle}>Quinta, 23 de Maio de 2024</Text>
+      <Header />
       <Form onAdd={handleParticipantAdd} />
       <FlatList 
         data={participants} 
